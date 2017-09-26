@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Watchback to Javascript</title>
+    <link rel="stylesheet" href="style.css"/>
+    
+</head>
+
+
+
+<!-- <body> -->
+<body id='body' onload="showDate()">
+<div class="header">
+    <h1 id="heading">Watchback to JS</h1>
+    <p>time to start</p>
+</div>    
+
+<div class="container">
+    <button onclick="doClick()">Click Me</button>
+    <button onclick="this.innerHTML='You Clicked!'">Click Me</button>
+    <button onclick="changeText(this)">Click Me</button>
+    <button onclick="changeText2()">Click Me</button>
+    <button onmouseover="showDate()" onmouseout="clearDate()" >Show Date</button>
+    
+    <h1 id="time"></h1>
+</div>
+
+
+<!-- FORM ====================  -->
+<form action="" method="post" name="myForm" onsubmit="return validateForm()">
+    <div>
+        <label for="First Name">First Name</label>
+        <input type="text" name="firstName" id="firstName" />
+    </div>
+    <div>
+        <label for="Last Name">Last Name</label>
+        <input type="text" name="lastName" id="lastName" />
+    </div>
+    
+    <br />
+    
+    <div>
+        <label>Background</label>
+        <select name="background" id="background" onchange="changeBackground(this)">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+        </select>
+    </div>
+
+    <br>
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+
+
+
+
+<script src="main.js"></script>
+<script>
+    //alert('Script Tags Work')
+    /*
+    console.log('HELLO');
+    for(var i=0; i<=200; i++){
+        console.log(i);
+    }
+    
+
+    var i=0;
+    while(i<10){
+        console.log(i);
+        i++;
+    }
+    
+
+    var number=[33,54,76,34,2,6];
+
+    number.forEach(function(number){
+        console.log(number);
+    });
+    
+
+
+    // OBJECT
+    // constructor pattern
+    function Fruit(name, color, shape){
+        this.name = name;
+        this.color = color;
+        this.shape = shape;
+
+        this.describe=function(){
+            return 'A '+this.name+ ' is the color ' +this.color;
+        }
+    }
+
+    var apple = new Fruit('apple', 'red', 'round');
+    var melon = new Fruit('melon', 'green', 'round');
+
+    console.log(apple);
+    console.log(melon.shape);
+    console.log(melon.describe());
+    
+
+
+    // Array Object
+    var users = [
+        {
+            name: 'Hyun C',
+            age: 30
+        },
+        {
+            name: 'Ayun R',
+            age: 25
+        },
+        {
+            name: 'Kyun O',
+            age: 20
+        },
+    ];
+
+    console.log(users[0].name);
+    
+
+*/
+    // EVENTS
+    
+    function doClick() {
+        alert('You Clicked!');
+    }
+    function changeText(id) {
+        id.innerHTML = 'You Clicked!!!';
+    }
+    function changeText2() {
+        var heading = document.getElementById('heading');
+        heading.innerHTML = 'YOU CLICKED ~ !';
+    }
+    function showDate() {
+        var time = document.getElementById('time');
+        time.innerHTML = Date();
+    }
+    function clearDate() {
+        var time = document.getElementById('time');
+        time.innerHTML = '';
+    }
+    
+
+    function changeBackground(x) {
+        console.log(x.value);
+        var body = document.getElementById('body');
+        body.style.backgroundColor = x.value;
+
+        var heading = document.getElementById('heading');
+        heading.style.color = x.value;
+    }
+
+    function validateForm() {
+        var firstName = document.forms["myForm"]["firstName"].value;
+        
+        if(firstName==null || firstName == ""){
+            alert("First name is required*");
+            return false;
+        }
+        if(firstName.length<3){
+            alert("First name must be at least 3 chars");
+            return false;
+        }
+    
+    }
+
+</script>
+
+
+</body>
+</html>
